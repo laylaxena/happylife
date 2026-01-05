@@ -1,0 +1,63 @@
+
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>XXXX</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="home">
+
+  <main class="home-wrap">
+    <!-- 这里就是你画的“XXXX”位置：可以换成标题/提示/谜面 -->
+    <h1 class="logo">
+      <span class="logo-letter">life door blog</span>
+   
+    </h1>
+
+    <form class="search" id="searchForm" autocomplete="off">
+      <input
+        id="searchInput"
+        class="search-input"
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="search-btn" type="submit" aria-label="Search button">
+        搜索
+      </button>
+    </form>
+
+    <p class="hint" id="hint"></p>
+
+    <!-- 可选：把线索藏在源码里 -->
+    <!-- hint: try "woer" -->
+  </main>
+
+  <script>
+    const form = document.getElementById("searchForm");
+    const input = document.getElementById("searchInput");
+    const hint = document.getElementById("hint");
+
+    // 让按钮/回车都能触发
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const q = (input.value || "").trim();
+
+      if (!q) {
+        hint.textContent = "请输入关键词。";
+        return;
+      }
+
+      // 这里先跳到 results.html（你后面可以把它当第1关/结果页/分流页）
+      // 把用户输入带过去：?q=xxx
+      window.location.href = "./results.html?q=" + encodeURIComponent(q);
+    });
+
+    // 自动聚焦输入框（更像搜索引擎）
+    window.addEventListener("load", () => input.focus());
+  </script>
+</body>
+</html>
