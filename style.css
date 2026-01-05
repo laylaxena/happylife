@@ -1,0 +1,148 @@
+
+
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>XXXX</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body class="home">
+
+  <main class="home-wrap">
+    <!-- ��������㻭�ġ�XXXX��λ�ã����Ի��ɱ���/��ʾ/���� -->
+    <h1 class="logo">
+      <span class="logo-letter">life door blog</span>
+   
+    </h1>
+
+    <form class="search" id="searchForm" autocomplete="off">
+      <input
+        id="searchInput"
+        class="search-input"
+        type="text"
+        placeholder="Search"
+        aria-label="Search"
+      />
+      <button class="search-btn" type="submit" aria-label="Search button">
+        ����
+      </button>
+    </form>
+
+    <p class="hint" id="hint"></p>
+
+    <!-- ��ѡ������������Դ���� -->
+    <!-- hint: try "woer" -->
+  </main>
+
+  <script>
+    const form = document.getElementById("searchForm");
+    const input = document.getElementById("searchInput");
+    const hint = document.getElementById("hint");
+
+    // �ð�ť/�س����ܴ���
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const q = (input.value || "").trim();
+
+      if (!q) {
+        hint.textContent = "������ؼ��ʡ�";
+        return;
+      }
+
+      // ���������� results.html���������԰�������1��/���ҳ/����ҳ��
+      // ���û��������ȥ��?q=xxx
+      window.location.href = "./results.html?q=" + encodeURIComponent(q);
+    });
+
+    // �Զ��۽�����򣨸����������棩
+    window.addEventListener("load", () => input.focus());
+  </script>
+</body>
+</html>
+
+:root{
+  --bg: #ffd6de;      /* ���챳�� */
+  --text: #2a0f14;    /* ��ɫ���� */
+  --box: #ffffffcc;   /* ��͸���� */
+  --border: #e5a6b3;  /* �߿�� */
+  --btn: #ff5a7a;     /* ��ť�ۺ� */
+  --btn-hover: #ff3f65;
+}
+
+*{ box-sizing:border-box; }
+body{ margin:0; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial; color:var(--text); }
+
+body.home{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+}
+
+.home-wrap{
+  width: min(720px, 92vw);
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding: 36px 18px;
+}
+
+.logo{
+  margin: 0 0 6px 0;
+  font-size: clamp(42px, 7vw, 72px);
+  font-weight: 800;
+  letter-spacing: 6px;
+  user-select: none;
+}
+
+.logo-letter{
+  display: inline-block;
+  transform: translateY(0);
+}
+
+/* ���������� */
+.search{
+  width: min(560px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.search-input{
+  height: 54px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--box);
+  outline: none;
+  font-size: 16px;
+}
+
+.search-input:focus{
+  border-color: #ff6f8a;
+  box-shadow: 0 0 0 4px rgba(255, 90, 122, 0.18);
+}
+
+.search-btn{
+  height: 54px;
+  padding: 0 18px;
+  border-radius: 14px;
+  border: 0;
+  background: var(--btn);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.search-btn:hover{ background: var(--btn-hover); }
+
+.hint{
+  margin: 0;
+  min-height: 1.4em;
+  opacity: .85;
+  font-size: 14px;
+}
