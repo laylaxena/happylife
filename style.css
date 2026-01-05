@@ -1,0 +1,98 @@
+:root{
+  --bg: #ffd6de;        /* 淡红背景 */
+  --text: #2a0f14;      /* 深色文字 */
+  --box: #ffffffcc;    /* 半透明白 */
+  --border: #e5a6b3;   /* 边框粉 */
+  --btn: #ff5a7a;      /* 按钮粉红 */
+  --btn-hover: #ff3f65;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Arial;
+  color: var(--text);
+}
+
+body.home{
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+}
+
+/* 页面整体容器 */
+.home-wrap{
+  width: min(720px, 92vw);
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding: 36px 18px;
+}
+
+/* 顶部 XXXX / logo */
+.logo{
+  margin: 0 0 6px 0;
+  font-size: clamp(42px, 7vw, 72px);
+  font-weight: 800;
+  letter-spacing: 6px;
+  user-select: none;
+}
+
+.logo-letter{
+  display: inline-block;
+  transform: translateY(0);
+}
+
+/* 搜索栏整体 */
+.search{
+  width: min(560px, 92vw);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: center;
+}
+
+/* 输入框 */
+.search-input{
+  height: 54px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--box);
+  outline: none;
+  font-size: 16px;
+}
+
+.search-input:focus{
+  border-color: #ff6f8a;
+  box-shadow: 0 0 0 4px rgba(255, 90, 122, 0.18);
+}
+
+/* 搜索按钮 */
+.search-btn{
+  height: 54px;
+  padding: 0 18px;
+  border-radius: 14px;
+  border: 0;
+  background: var(--btn);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 1px;
+}
+
+.search-btn:hover{
+  background: var(--btn-hover);
+}
+
+/* 提示文字 */
+.hint{
+  margin: 0;
+  min-height: 1.4em;
+  opacity: 0.85;
+  font-size: 14px;
+}
